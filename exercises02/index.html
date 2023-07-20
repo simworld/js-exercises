@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Exercises - Simone Susino</title>
+
+    <script>
+
+
+        ( function () {
+
+            'use strict'
+
+            let names = ["Tom", "Dick", "Mary-Lou"]
+
+            let numbers = [4,2,10,1,5]
+
+
+            // displays the elements in the array
+            function displayArray(array){
+
+                for(let i=0; i<array.length; i++){
+
+                    console.log(array[i])
+
+                }
+
+            }
+
+            // sort the arrays' elements
+            function sortArray(array){
+
+                let sortedArray = []
+
+                for(let i=0; i<array.length; i++){
+
+                    // if the elements in the array are numbers return the ordered numbers
+                    if(typeof array[i] === 'number'){
+
+                        console.log('Int')
+
+                        return sortedArray= array.sort(function(a,b){return a-b})
+                    }
+                    else {
+                        // else return the ordered array with strings
+                        return sortedArray= array.sort()
+
+                    }
+                }
+                
+                // return sortedArray= array.sort(function(a,b){return a-b})
+            }
+
+            // double the numbers in the array
+            function doubleNumbers(array){
+
+                let doubled = []
+                for(let i=0; i <array.length; i++){
+
+                    doubled.push(array[i]*2)
+                }
+
+                return doubled
+            }
+
+            // reverse the array
+            function reverseArray(array){
+
+                let reversed = []
+
+                for(let i = array.length-1; i >= 0; i--){
+
+                    reversed.push(array[i])
+                }
+                return reversed
+            }
+
+            // delete elements in array
+            function deleteElementArray(array, index){
+
+                delete array[index]
+
+                return array
+
+            }
+
+            // replace element in the array
+            function replaceElement(array, index, element){
+
+                array[index] = element
+
+                return array
+            }
+
+
+            console.log("Displays the elements in the array")
+            displayArray(names)
+
+            console.log("Displays the sorted elements in the array")
+            displayArray(sortArray(names))
+
+            console.log("Displays the doubled numbers in the array")
+            displayArray(doubleNumbers(numbers))
+
+            console.log("Displays the sorted doubled numbers in the array")
+            displayArray(sortArray(doubleNumbers(numbers)))
+
+            console.log("Displays the reversed array")
+            displayArray(reverseArray(names))
+
+            console.log("Delete the first element of the array")
+            displayArray(deleteElementArray(names, 0))
+
+            console.log("Delete the last element of the array")
+            displayArray(deleteElementArray(names, names.length-1))
+            
+            console.log("Replace the first element in the array")
+            displayArray(replaceElement(names, 0, "Sim"))
+
+            console.log("Replace the last element in the array")
+            displayArray(replaceElement(names, names.length-1, "Paul"))
+
+            console.log("Replace a specific element in the array")
+            displayArray(replaceElement(names, 1, "Thomas"))
+
+
+
+
+        })();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
