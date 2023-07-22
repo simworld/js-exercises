@@ -151,7 +151,31 @@ element</p>
             }
             
 
+            function namesLastnameToHTMLList(array){
 
+
+                let namesSwapped = []
+                let namesLastNameToString = ""
+                let capitalized = convertUppercase2(array)
+
+                // return capitalized
+
+                for (let i in capitalized){
+
+                    let words = capitalized[i].split(" ")
+
+                    namesSwapped.push(words[1] + ", " + words[0])
+
+                    namesLastNameToString += "<li>" + namesSwapped[i] + "</li>"
+
+                    // console.log(words[1], words[0])
+                }
+
+                // console.log(namesLastNameToString)
+
+                namesLastNameToString = "<ul>".concat(namesLastNameToString) + "</ul>"
+                return namesLastNameToString
+            }
 
             console.log("Names in capital letter: ", convertUppercase(names))
             document.querySelector(".numberOne").innerHTML = convertUppercase(names).join(", ");
@@ -169,7 +193,9 @@ element</p>
             document.querySelector(".numberFour").innerHTML = namesToHTMLList(names)
 
 
-
+            console.log("Names and Lastname to HTML list: ", namesLastnameToHTMLList(namesSurname))
+            document.querySelector(".numberFive").innerHTML = namesLastnameToHTMLList(namesSurname)
+            
 
         })();
     </script>
