@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Exercises - Exercises 03 - Simone</title>
+
+
+</head>
+<body>
+
+    <h1>Exercises</h1>
+
+    <h2>Exercise 1</h2>
+
+    <p>Write a function to take a list of names (first name - in lower case), and convert the first
+letter of each entry to uppercase. Return a new array</p>
+
+    <h3>Result:</h3>
+    <p class="numberOne"></p>
+
+    <h2>Exercise 2</h2>    
+
+    <p>Write a function to take a list of names (first and last name – in lower case), and returns a
+new array with each name in proper case (ie capital first letter for the first letter of first
+name &amp; last name)</p>
+
+    <h3>Result:</h3>
+    <p class="numberTwo"></p>
+
+    <h2>Exercise 3</h2>   
+    
+    <p>Write a function to take an array of names, and combine them all into a single string,
+separated by commas. Do not use the built in join() function</p>
+
+    <h3>Result:</h3>
+    <p class="numberThree"></p>
+
+    <h2>Exercise 4</h2>    
+
+    <p>Write a function to take an array of names, and combine them into a string that presents as
+a &lt;ul&gt;..&lt;/ul&gt; element containing a list of &lt;li&gt;..&lt;/li&gt; elements, one for each name.</p>
+
+    <h3>Result:</h3>
+    <p class="numberFour"></p>
+    
+    <h2>Exercise 5</h2>    
+
+    <p>Write a function to take an array of names (first name &amp; last name) , proper case the names,
+and change the name format such that names now read “lastname, firstname”. Generate a
+&lt;ul&gt;&lt;li&gt;…&lt;/li&gt;&lt;/ul&gt; structure as a string containing the names, one name per &lt;ll&gt;..&lt;/li&gt;
+element</p>
+
+    <h3>Result:</h3>
+    <p class="numberFive"></p>
+
+
+        <script>
+
+
+        (function(){
+            'use strict'
+
+
+            let names = ["paul", "sarah", "tom", "sam"]
+
+            let namesSurname = ["paul white", "sarah lopez", "tom sawyer", "sam carle"]
+
+
+            // convert the first letter of the name to uppercase
+            function convertUppercase(array){
+
+
+                let namesFirstLetterUppercase = []
+
+                for(let i = 0; i < array.length; i++){
+
+                    console.log(array[i])
+
+                    // capitalize the first letter of each name
+                    namesFirstLetterUppercase.push(array[i][0].toUpperCase() + array[i].substr(1))
+                    
+
+                }
+
+                return namesFirstLetterUppercase
+            }
+
+            // convert the first letter of the name and of the surname to uppercase
+            function convertUppercase2(array){
+
+                let newNameSurname = []
+                let words = []
+
+                for(let i = 0; i < array.length; i++){
+
+                    // split the array 
+                    let words = array[i].split(" ");
+                    
+                    // capitalize the letters in position 0 and 1, first letter for name and surname
+                    let capitalizedLetter = words[0].charAt(0).toUpperCase() + words[0].substr(1) + " " +words[1].charAt(0).toUpperCase() + words[1].substr(1)
+   
+                    // push the letter in the array
+                    newNameSurname.push(capitalizedLetter)
+                    
+                }
+
+                
+                return newNameSurname
+            }
+
+
+            // transform the array of names into a string separeted by ","
+            function namesToString(array){
+
+                let namesToString = ""
+
+                for (let i in array){
+
+                    let words = array[i].split(" ")
+
+                    // console.log(words)
+
+                    namesToString += words + ","
+
+                }
+
+                //remove the last "," at the end of the string
+                return namesToString.slice(0, -1)
+
+            }
+
+
+            // transform the array of names into a string with <ul> and <li> elements
+            function namesToHTMLList(array){
+
+                let namesToString = ""
+
+                for (let i in array){
+
+                    let words = array[i].split(" ")
+
+                    // console.log(words)
+
+                    namesToString += "<li>" + words + "</li>"
+
+                }
+
+                namesToString =  "<ul>".concat(namesToString) + "</ul>"
+                return namesToString
+            }
+            
+
+
+
+            console.log("Names in capital letter: ", convertUppercase(names))
+            document.querySelector(".numberOne").innerHTML = convertUppercase(names).join(", ");
+
+        
+            console.log("Names and surnames in capital letters: ", convertUppercase2(namesSurname))
+            document.querySelector(".numberTwo").innerHTML = convertUppercase2(namesSurname).join(", ");
+
+
+            console.log("Names to string: ", namesToString(names))
+            document.querySelector(".numberThree").innerHTML = namesToString(names)
+
+
+            console.log("Names to HTML list: ", namesToHTMLList(names))
+            document.querySelector(".numberFour").innerHTML = namesToHTMLList(names)
+
+
+
+
+        })();
+    </script>
+</body>
+</html>
