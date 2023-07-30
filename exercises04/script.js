@@ -4,7 +4,7 @@
 
     const names = ["paul wHiTe", "sArah loPez", "tom sawYer", "saM cARle"]
     const fruits = ["banana", "cherry", "strawberry", "orange"]
-
+    const planets = ["earth", "jupiter", "mars", "mercury", "neptune", "saturn", "venus"]
 
 
     function toHTML(array){
@@ -75,20 +75,41 @@
 
     }
 
+    function imageToDiv (image){
+
+        return `<div> ${image} </div>`
+    }
+
+    
     function toHTMLImg(images){
         let newImages = listToFileNames(images)
 
-        // console.log(x)
         let htmlImg = []
         for(let image of newImages){
 
             htmlImg.push(imageToHTML(image))
         }
-
-        // console.log(htmlImg)
         return htmlImg
     }
     
+
+    function toDivImg(images){
+        let newImages = toHTMLImg(images)
+
+        let divImg = []
+
+        for (let image of newImages){
+
+            divImg.push(imageToDiv(image))
+
+        }
+
+        console.log(divImg)
+        return divImg
+
+    }
+
+
     function toDisplay(content, tagName){
 
         let tag = document.querySelector(`${tagName}`)
@@ -101,14 +122,17 @@
     // Exercise01
     console.log(toHTML(names))
     toDisplay(toHTML(names), '.numberOne')
-    // toDisplay(toHTML(names), '.numberOne')
-    // document.querySelector(".numberOne").innerHTML = toHTML(names);
 
 
     // Exercise02
     let singleImage = toHTMLImg(fruits);
     console.log(singleImage)
-
     toDisplay(singleImage.join(""), ".numberTwo");
+
+    // Exercise03
+    let singlePlanet = toDivImg(planets);
+    console.log(singlePlanet)
+    toDisplay(singlePlanet.join(""), ".numberThree");
+    // let singlePlanet = toHTMLImg(planets).map((planet)=> toDisplay(planet, '.numberThree'))
 
 })();

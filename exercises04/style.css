@@ -3,3 +3,7 @@ table, tr, td {
     padding: 10px;
     border-collapse: collapse;
 }
+
+.numberThree img {
+    width: 150px;
+}
