@@ -2,7 +2,9 @@
     'use strict'
 
 
-    let names = ["paul wHiTe", "sArah loPez", "tom sawYer", "saM cARle"]
+    const names = ["paul wHiTe", "sArah loPez", "tom sawYer", "saM cARle"]
+    const fruits = ["banana", "cherry", "strawberry", "orange"]
+
 
 
     function toHTML(array){
@@ -24,7 +26,6 @@
 
         return nameToHTMLTable(newString)
             // console.log(newArray[0].split(" "))
-
 
     }
 
@@ -49,23 +50,65 @@
 
     }
 
-    console.log(toHTML(names))
-    document.querySelector(".numberOne").innerHTML = toHTML(names);
+    function listToFileNames(fruits){
 
-    // console.log("Names and surnames in capital letters: ", convertUppercase2(namesSurname))
-    // document.querySelector(".numberTwo").innerHTML = convertUppercase2(namesSurname).join(", ");
+        let newFruits = []
 
+        for(let fruit of fruits){
 
-    // console.log("Names to string: ", namesToString(names))
-    // document.querySelector(".numberThree").innerHTML = namesToString(names)
+            newFruits.push(stringToFilename(fruit))
+        }
 
+        return newFruits
 
-    // console.log("Names to HTML list: ", namesToHTMLList(names))
-    // document.querySelector(".numberFour").innerHTML = namesToHTMLList(names)
+        // callback(newFruits)
+    }
 
+    function stringToFilename(string){
 
-    // console.log("Names and Lastname to HTML list: ", namesLastnameToHTMLList(namesSurname))
-    // document.querySelector(".numberFive").innerHTML = namesLastnameToHTMLList(namesSurname)
+        return `../img/${string}.jpg`
+    }
+
+    function imageToHTML(image){
+
+        return `<img src="${image}" alt="">`
+
+    }
+
+    function toHTMLImg(images){
+        let newImages = listToFileNames(images)
+
+        // console.log(x)
+        let htmlImg = []
+        for(let image of newImages){
+
+            htmlImg.push(imageToHTML(image))
+        }
+
+        // console.log(htmlImg)
+        return htmlImg
+    }
     
+    function toDisplay(content, tagName){
+
+        let tag = document.querySelector(`${tagName}`)
+        
+        tag.innerHTML = content
+        
+        // return tag
+    }
+
+    // Exercise01
+    console.log(toHTML(names))
+    toDisplay(toHTML(names), '.numberOne')
+    // toDisplay(toHTML(names), '.numberOne')
+    // document.querySelector(".numberOne").innerHTML = toHTML(names);
+
+
+    // Exercise02
+    let singleImage = toHTMLImg(fruits);
+    console.log(singleImage)
+
+    toDisplay(singleImage.join(""), ".numberTwo");
 
 })();
